@@ -9,26 +9,25 @@
 
 // Реализация для работы не только с промисами
 function promiseAll(promises) {
-    if (promises.length == 0) {
+    if (promises.length === 0) {
         return Promise.resolve([]);
     }
     return new Promise((resolve, reject) => {
         const results = [];
-        let resolved = 0;
+        let resolvedCount = 0;
         promises.forEach((promise, index) => {
-            Promise.resolve(promise).then(
-                (result) => {
+            Promise.resolve(promise)
+                .then((result) => {
                     results[index] = result;
-                    resolved++;
+                    resolvedCount++;
 
-                    if (resolved === promises.length) {
+                    if (resolvedCount === promises.length) {
                         resolve(results);
                     }
-                },
-                (error) => {
+                })
+                .catch((error) => {
                     reject(error);
-                }
-            );
+                });
         });
     });
 }
