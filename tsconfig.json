@@ -1,31 +1,25 @@
 {
+  "include": ["tasks/**/*.ts"],
   // Visit https://aka.ms/tsconfig to read more about this file
-  "include": [
-    "*.ts",
-    "*.tsx",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "*.js",
-    "*.d.js"
-  ],
   "compilerOptions": {
     // File Layout
+    // "rootDir": "./src",
     "outDir": "./dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
-    "types": [],
+    "noEmit": true,                  
+    // For nodejs:
+    "lib": ["ES2020", "DOM"],
+    // "types": ["node"],
+    // and npm install -D @types/node
 
     // Other Outputs
     "sourceMap": true,
-    "declaration": false,
-    "declarationMap": false,
+    "declaration": true,
+    "declarationMap": true,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -46,6 +40,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
   }
 }

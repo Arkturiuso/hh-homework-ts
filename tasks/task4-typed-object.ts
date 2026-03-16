@@ -30,11 +30,11 @@ const user = typedObject({
     age: 'number',
 });
 
-user.name = 'Ivan'; // выполнится
-user.age = 20; // выполнится
-// user.age = '20'; // должно выбросить ошибку
-user.favColor = 'green'; // установка нового значения
-// user.favColor = 'red'; // Интересный момент, разберем ниже
+user["name"] = 'Ivan'; // выполнится
+user["age"] = 20; // выполнится
+// user["age"] = '20'; // должно выбросить ошибку
+user["favColor"] = 'green'; // установка нового значения
+// user["favColor"] = 'red'; // Интересный момент, разберем ниже
 
 // При попытке заново установить значение цвета, получаем ошибку ниже
 // Тип свойства favColor должен быть undefined, дан string
@@ -68,7 +68,7 @@ const newUser = modifiedTypedObject({
     age: 'number',
 });
 
-newUser.name = 'Ivan'; // выполнится
-newUser.age = 20; // выполнится
-// newUser.age = '20'; // должно выбросить ошибку
-// newUser.favColor = 'green'; // значение не установится новому свойству
+newUser["name"] = 'Ivan'; // выполнится
+newUser["age"] = 20; // выполнится
+// newUser["age"] = '20'; // должно выбросить ошибку
+// newUser["favColor"] = 'green'; // значение не установится новому свойству
