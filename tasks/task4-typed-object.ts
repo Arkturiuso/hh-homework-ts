@@ -6,11 +6,18 @@
 - При присваивании проверять тип и бросать ошибку при несоответствии
 */
 
+// TypeMap для хранения типов
+type TypeMap = {
+    string: string;
+    number: number;
+};
+
 // Простая реализация с возможностью добавления новых свойств
-function typedObject(schema: Record<string, string>) {
+// Значения свойств объекта должны соответствовать значению (типу)
+function typedObject<T extends Record<string, keyof TypeMap>>(schema: T) {
     // TODO: реализуйте
     return new Proxy(
-        {},
+        {} as { [K in keyof T]: TypeMap[T[K]] } & Record<string, unknown>,
         {
             set(target, prop, value) {
                 if(prop in schema && typeof prop === 'string')
@@ -21,7 +28,7 @@ function typedObject(schema: Record<string, string>) {
                 }
                 return Reflect.set(target, prop, value);
             },
-        }) as Record<string, unknown>;
+        });
 }
 
 // Test case #1
@@ -42,10 +49,10 @@ user["favColor"] = 'green'; // установка нового значения
 // В связи с этим, запретим создание новых свойств, чтобы избежать таких ситуаций
 
 // Реализация без возможности установления новых свойств
-function modifiedTypedObject(schema: Record<string, string>) {
+function modifiedTypedObject<T extends Record<string, keyof TypeMap>>(schema: T) {
     // TODO: реализуйте
     return new Proxy(
-        {},
+        {} as { [K in keyof T]: TypeMap[T[K]] },
         {
             set(target, prop, value) {
                 if(typeof prop === 'string') {
@@ -59,7 +66,7 @@ function modifiedTypedObject(schema: Record<string, string>) {
                 }
                 return Reflect.set(target, prop, value);
             },
-        }) as Record<string, unknown>;
+        });
 }
 
 // Test case #1

@@ -16,9 +16,10 @@ function memoize<T extends unknown[], R>(
     const cache = new Map<string, R>();
     return function (this: void, ...args: T): R {
         const key = JSON.stringify(args);
-        if (cache.has(key)) {
+        const value = cache.get(key);
+        if(value !== undefined) {
             console.log("I've already seen this one");
-            return cache.get(key)!;
+            return value;
         }
         let result: R = fn.apply(this, args);
         cache.set(key, result);
@@ -78,9 +79,10 @@ function improvedMemoize<T extends unknown[], R>(
             normalized.sort();
         }
         const key = JSON.stringify(normalized);
-        if (cache.has(key)) {
+        const value = cache.get(key);
+        if (value !== undefined) {
             console.log("I've already seen this one");
-            return cache.get(key)!;
+            return value;
         }
         let result = fn.apply(this, args);
         cache.set(key, result);
