@@ -9,8 +9,11 @@
 // Простая реализация с проверкой ms
 function delay(ms: number): Promise<void> {
     // TODO: реализуйте
-    if (ms < 0) {
-        return Promise.reject('Invalid ms value');
+    if(typeof ms !== 'number') {
+        return Promise.reject('Invalid argument type: must be number')
+    }
+    if(ms < 0) {
+        return Promise.reject('Invalid argument value');
     }
 
     return new Promise((resolve) => {
@@ -29,3 +32,10 @@ delay(-200)
     .then(() => console.log('Готово через -200мс'))
     .catch(() => console.log('Ошибка переданного значения'));
 // Test status: given value error
+
+// Тест ниже просто невыполним, Ts не позволит скомпилировать законным путем
+// // Test case #3
+// delay('hello')
+//     .then(() => console.log('Выполнилось??'))
+//     .catch(() => console.log('Ошибка переданного значения'));
+// // Test status: given type error
