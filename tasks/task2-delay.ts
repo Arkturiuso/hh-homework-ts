@@ -10,7 +10,7 @@
 function delay(ms: number): Promise<void> {
     // TODO: реализуйте
     if(typeof ms !== 'number') {
-        return Promise.reject('Invalid argument type: must be number')
+        return Promise.reject('Invalid argument type: must be number');
     }
     if(ms < 0) {
         return Promise.reject('Invalid argument value');
