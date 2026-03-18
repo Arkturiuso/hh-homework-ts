@@ -1,0 +1,13 @@
+{
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib",
+  "eslint.run": "onType",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  }
+}

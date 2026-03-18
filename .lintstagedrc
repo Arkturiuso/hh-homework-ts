@@ -1,0 +1,13 @@
+{
+  "*.ts": [
+    "eslint --fix",
+    "prettier --write",
+    "yarn typecheck:homework"
+  ],
+  "*.{js,jsx,tsx}": [
+    "exit 1"
+  ],
+  "*.{css,html,json}": [
+    "prettier --write"
+  ]
+}
