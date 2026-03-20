@@ -7,9 +7,6 @@ export default [
   ...tseslint.configs.recommended,
   {
     languageOptions: {
-        globals: {
-            ...globals.browser,
-        },
         parser: tseslint.parser,
         parserOptions: {
             projectService: true,
