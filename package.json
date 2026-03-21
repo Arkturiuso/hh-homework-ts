@@ -2,6 +2,7 @@
   "name": "hh-homework-ts",
   "author": "Kirill Tagai <tagaykirill83@gmail.com>",
   "packageManager": "yarn@4.10.3",
+  "type": "module",
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/node": "25.5.0",
