@@ -1,0 +1,13 @@
+{
+  "*.ts": [
+    "eslint --fix",
+    "prettier --write",
+    "yarn tsc --noEmit --strict"
+  ],
+  "*.{js,jsx,tsx}": [
+    "exit 1"
+  ],
+  "*.{css,html,json}": [
+    "prettier --write"
+  ]
+}
